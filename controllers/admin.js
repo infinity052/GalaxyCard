@@ -1,13 +1,10 @@
 class Admin{
 
-    async constructor(){
+    constructor(){
         this.model = require('../models/User');
-        await this.model.sync();
     }
 
     async createUser(username, firstname, lastname){
-        if(userExists(username))
-        return false;
         const result = await this.model.create({username, firstname, lastname});
         console.log(result.toJSON());
         return true;
@@ -29,16 +26,16 @@ class Admin{
         });
     }
     
-    async deleteUser(username){
+    async deleteUser(id){
         await this.model.destroy({
             where: {
-                username
+                id
             }
         });
     }
     
     async userExists(username){
-        const res = await readUser(username);
+        const res = await this.readUser(username);
         if(res.length == 0)
         return false;
         
@@ -51,6 +48,11 @@ class Admin{
         });
         return result;
     }
-    
+
+    async getAllUsers(){
+        const result = await this.model.findAll();
+        return result;
+    }
 }
 
+module.exports = new Admin();

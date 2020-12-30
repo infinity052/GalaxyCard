@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const sequelize = new Sequelize('postgres://postgres:frootloops@localhost:5432/galaxycard');
+const sequelize = new Sequelize('postgres://postgres:abc123:5432/galaxycard');
 
 
 // try {

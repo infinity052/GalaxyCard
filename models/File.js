@@ -11,8 +11,15 @@ File.init({
         unique: true,
         allowNull: false
     },
-    file: {
-        type: DataTypes.BLOB
+
+    filename: {
+        type : DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    originalname: {
+        type : DataTypes.STRING,
+        allowNull: false
     }
     },
     {
@@ -21,3 +28,5 @@ File.init({
         freezeTableName: true
     }
 );
+
+module.exports = File;
